@@ -5,6 +5,11 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+
+
+
+
 body{
     background-color: #1b1b32
 }
@@ -82,4 +87,26 @@ body{
 #footer p a{
     text-decoration: none;
     color: orange;
+}
+
+@media all and (max-width: 768px) {
+    #quote-container {
+        width: 90%;
+        height: 50%;
+    }
+    #quote {
+        font-size: 14px;
+    }
+    #author {
+        font-size: 14px;
+    }
+    #new-quote {
+        padding: 8px 16px;
+    }
+    #header #text{
+        font-size: 16px;
+    }
+    #footer{
+        font-size: 16px;
+    }
 }
