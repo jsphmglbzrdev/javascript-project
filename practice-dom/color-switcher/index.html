@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Switcher</title>
+    <style>
+      body {
+        transition: background-color 0.5s ease;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body id="randomColor" class="">
+    <button id="changeColorBtn">Change Color</button>
+
+    <script>
+      const colors = [
+        "#FF0000", // red
+        "#00FF00", // green
+        "#0000FF", // blue
+        "#FFFF00", // yellow
+        "#00FFFF", // cyan
+        "#FF00FF", // magenta
+        "#FFA500", // orange
+        "#800080", // purple
+        "#FFC0CB", // pink
+        "#A52A2A", // brown
+        "#808080", // gray
+        "#000000", // black
+        "#FFFFFF", // white
+        "#000080", // navy
+        "#008080", // teal
+        "#32CD32", // lime
+        "#800000", // maroon
+        "#808000", // olive
+        "#FFD700", // gold
+        "#C0C0C0", // silver
+      ];
+
+      document
+        .getElementById("changeColorBtn")
+        .addEventListener("click", function () {
+          const randomIndex = Math.floor(Math.random() * colors.length);
+          document.body.style.backgroundColor = colors[randomIndex];
+
+          localStorage.setItem("bgColor", colors[randomIndex]);
+        });
+      const savedColor = localStorage.getItem("bgColor");
+
+      if (savedColor) {
+        document.body.style.backgroundColor = savedColor;
+      }
+
+      console.log(colors);
+    </script>
+  </body>
+</html>

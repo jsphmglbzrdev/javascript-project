@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter App</title>
+
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .counter-app {
+        border: 1px solid black;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+			.container{
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+			
+			#history-container{
+				border: 1px solid black;
+        padding: 20px;
+        display: none;
+				gap: 5px;
+        align-items: center;		
+				width: 300px;
+				height: 300px;	
+				position: relative;
+			}
+		
+
+			#history-list{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				overflow-y: auto;
+				border: 1px solid gray;
+				padding: 5px;
+			}
+    </style>
+  </head>
+  <body>
+
+
+    <div class="counter-app">
+      <h1 id="value">0</h1>
+
+      <div>
+        <button id="increment">Increment</button>
+        <button id="decrement">Decrement</button>
+      </div>
+
+      <div class="container">
+        <button id="save-count">Save Count</button>
+				<button id="show-history">Show History</button>
+
+      </div>
+
+			<div id="save-text"></div>
+
+    </div>
+
+		<div id="history-container">
+			<div id="back-button"><-Back</button>
+
+			<div id="history-list">
+
+			</div>
+		</div>
+
+    <script>
+			const valueEl = document.getElementById("value");
+			const incrementBtn = document.getElementById("increment");
+			const decrementBtn = document.getElementById("decrement");
+			const saveCountBtn = document.getElementById("save-count");
+			const saveText = document.getElementById("save-text");
+			const showHistoryBtn = document.getElementById("show-history");
+			const backBtn = document.getElementById("back-button");
+
+
+			let savedData = JSON.parse(localStorage.getItem("countData")) || [];
+
+			let count = 0
+
+
+
+
+			saveCountBtn.addEventListener("click", function(){
+				let data = {
+					count: count,
+					timestamp: new Date().toLocaleString()	
+				}
+				savedData.push(data)
+				localStorage.setItem("countData", JSON.stringify(savedData))
+
+				saveText.textContent = `Saved: ${count} at ${data.timestamp}`
+				saveText.style.color = "green"
+
+				setTimeout(() => {
+					saveText.textContent = ""
+				}, 3000);
+			})
+
+			showHistoryBtn.addEventListener("click", function(){
+				document.querySelector(".counter-app").style.display = "none"
+				document.getElementById("history-container").style.display = "flex"
+				renderData()
+			})
+			
+			backBtn.addEventListener("click", () => {
+				document.querySelector(".counter-app").style.display = "flex"
+				document.getElementById("history-container").style.display = "none"
+
+			
+			})
+
+			incrementBtn.addEventListener("click", function(){
+				count++
+				valueEl.textContent = count
+			})
+			decrementBtn.addEventListener("click", function() {
+				count > 0 ? count-- : count =0
+				valueEl.textContent = count
+			})
+
+		  const renderData = () => {
+				const historyList = document.getElementById("history-list")
+				historyList.innerHTML = ""
+
+				savedData.forEach((data, index) => {
+					const div = document.createElement("div")
+
+					div.textContent = `${index + 1}. Count: ${data.count} - Saved at: ${data.timestamp}`
+					historyList.appendChild(div)
+				})
+
+				console.log(historyList)
+			}
+
+    </script>
+  </body>
+</html>
