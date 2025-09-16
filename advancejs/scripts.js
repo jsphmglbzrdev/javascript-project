@@ -53,27 +53,58 @@ myName.greet();
 
 */
 
-function processData(){
 
-	return new Promise((resolve, reject) => {
+// function processData(){
+
+// 	return new Promise((resolve, reject) => {
+// 		setTimeout(() => {
+// 			return resolve({name : "Joseph", url : "www.youtube.com"})
+// 		}, 3000)
+// 	})
+
+// }
+// async function getData(){
+// 	try{
+// 		console.log("Fetching data....")
+// 		const data = await processData();
+// 		console.log("Data : ", data)
+// 		console.log("Data fetched successfully")
+// 	}catch(err){
+// 		console.log("There must be something wrong", err)
+// 	}
+
+// }
+// getData()
+
+function simulateAsyncTask() {
+	console.log("Task started");
+	setTimeout(() => {
+		console.log("Task finished");
+
+	}, 2000)
+	}
+
+function simulateMultipleTasks() {
+
+	for(let i =1; i<=3; i++){
 		setTimeout(() => {
-			return resolve({name : "Joseph", url : "www.youtube.com"})
-		}, 3000)
-	})
-
-}
-
-async function getData(){
-	try{
-		console.log("Fetching data....")
-		const data = await processData();
-		console.log("Data : ", data)
-		console.log("Data fetched successfully")
-	}catch(err){
-		console.log("There must be something wrong", err)
+			console.log(`Task ${i} finished`);
+		}, i * 1000)
 	}
 
 }
 
-getData()
+function fetchDataWithCallback(callback) {
+	setTimeout(() => {
+		console.log("fetched");
+		callback("Fetched data")
+	}, 2000)
+}
 
+simulateAsyncTask();
+
+simulateMultipleTasks();
+
+fetchDataWithCallback((result) => {
+	console.log(result);
+})
