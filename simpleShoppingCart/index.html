@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shopping Cart</title>
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="flex item-center font-[poppins] justify-center h-screen text-white bg-black">
+	
+	<div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md relative">
+		<h1 class="text-xl">Shopping Cart</h1>
+
+
+		<div id="cart-list" class="flex flex-col gap-4 my-4 max-h-96 overflow-y-auto">
+	
+		</div>
+
+
+		<h1 class="text-xl">Order :</h1>
+		<div id="purchase-list" class="mt-5 flex flex-col gap-4 ">
+			<div class="m-auto hidden" id="empty-cart">Your cart is empty</div>
+			
+			
+		</div>
+
+
+
+		<div class="absolute bottom-15 left-5">Total price : <span id="total-price"></span></div>
+
+		<div class="absolute bottom-4 flex flex-col gap-2 right-0 px-8">
+				<button id="checkout" class="bg-green-400 py-2 px-5 rounded-md cursor-pointer hover:bg-green-600">Checkout</button>
+	
+		</div>
+
+
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

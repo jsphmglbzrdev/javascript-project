@@ -83,7 +83,6 @@ function simulateAsyncTask() {
 
 	}, 2000)
 	}
-
 function simulateMultipleTasks() {
 
 	for(let i =1; i<=3; i++){
@@ -91,20 +90,15 @@ function simulateMultipleTasks() {
 			console.log(`Task ${i} finished`);
 		}, i * 1000)
 	}
-
 }
-
 function fetchDataWithCallback(callback) {
 	setTimeout(() => {
 		console.log("fetched");
 		callback("Fetched data")
 	}, 2000)
 }
-
 simulateAsyncTask();
-
 simulateMultipleTasks();
-
 fetchDataWithCallback((result) => {
 	console.log(result);
 })

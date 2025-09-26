@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather App</title>
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black flex items-center justify-center min-h-screen text-white">
+	<div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+		<h1 class="text-2xl font-bold mb-6 text-center">Weather App</h1>
+		<div>
+			<div  class="block mb-2">Enter City Name:</div>
+			<input type="text" id="inputCity" class="w-full p-2 mb-4 rounded bg-gray-700 text-white" placeholder="e.g., New York">
+			<button id="getWeather" class="w-full bg-blue-600 hover:bg-blue-700 text-white p-2 rounded">Get Weather</button>
+		</div>
+
+		<div id="weatherInfo" class="hidden" >
+			<h1 id="cityName" class="text-2xl font-bold mb-4"></h1>	
+			<p id="temperature" class=" font-bold mb-4"></p>	
+			<p id="description" class="font-bold mb-4"></p>	
+		</div>
+		<p id="errorMessage" class="hidden">Location not found....</p>
+	</div>
+
+	<script src="script.js"></script>
+</body> 
+</html>
